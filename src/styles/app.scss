@@ -1,3 +1,70 @@
+html, body {
+    height: 100%;
+    margin : 0;
+    padding : 0
+}
+
+div {
+    box-sizing: border-box;
+}
+
+#root {
+    height: 100%;
+}
+
 .App {
-    margin : auto;
+    background-color: #e9ebee;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ReplyList {
+    width : 500px;
+    border-radius: 4px;
+    border : 1px solid #d4d4d4;
+    background-color: #ffffff;
+
+    & .footer {
+        padding : 10px 15px;
+        display: flex;
+
+        & .ReplyInput {
+            flex : 1 1 auto;
+        }
+
+    }
+}
+
+.Reply {
+    display: flex;
+}
+
+.ReplyInput {
+    display : flex;
+    border-radius: 18px;
+    background-color: #f2f3f5;
+    border : 1px solid #d4d4d4;
+    height: 35px;
+    overflow: hidden;
+    padding : 0 10px;
+    
+    & input {
+        border : none;
+        background-color: inherit;
+        flex : 1 1 auto;
+        &::placeholder {
+            color : #d4d4d4
+        }
+    }
+
+    & .icons {
+        flex-shrink: 0;
+        display: flex;
+    }
+}
+
+.IconButton {
+    width : 32px;
 }
