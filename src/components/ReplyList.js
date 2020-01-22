@@ -4,10 +4,10 @@ import ReplyInputContainer from '../containers/ReplyInputContainer';
 const ReplyList = () => {
     return (
         <div className = 'ReplyList'>
-            <div className = 'body'>
+            <div className = 'ReplyList-body'>
                 <div><ReplyContainer></ReplyContainer></div>
             </div>
-            <div className ='footer'>
+            <div className ='ReplyList-footer'>
                 <ReplyInputContainer></ReplyInputContainer>
             </div>
         </div>

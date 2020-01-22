@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProfileImage = ({src, userName}) => {
     return (
-        <div className = 'ProfileImage'><img src = '/public/logo192.png' alt= {userName}/></div>
+        <img className = 'ProfileImage' src = '/siba.jpg' alt= {userName}/>
     )
 }
 

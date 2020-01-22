@@ -23,11 +23,11 @@ div {
 .ReplyList {
     width : 500px;
     border-radius: 4px;
+    padding : 10px 15px;
     border : 1px solid #d4d4d4;
     background-color: #ffffff;
 
-    & .footer {
-        padding : 10px 15px;
+    & .ReplyList-footer {
         display: flex;
 
         & .ReplyInput {
@@ -39,12 +39,26 @@ div {
 
 .Reply {
     display: flex;
+    margin-bottom: 10px;
+    & .img-wrap {
+
+    }
+
+    & .Reply-body {
+        flex : 1 1 auto;
+        overflow: overlay;
+        padding-right: 30px;
+    }
+}
+
+@mixin reply-box {
+    border-radius: 18px;
+    background-color: #f2f3f5;
 }
 
 .ReplyInput {
+    @include reply-box;
     display : flex;
-    border-radius: 18px;
-    background-color: #f2f3f5;
     border : 1px solid #d4d4d4;
     height: 35px;
     overflow: hidden;
@@ -57,6 +71,9 @@ div {
         &::placeholder {
             color : #d4d4d4
         }
+        &:focus {
+            outline :none;
+        }
     }
 
     & .icons {
@@ -65,6 +82,52 @@ div {
     }
 }
 
+.ReplyContent {
+    @include reply-box;
+    padding : 10px;
+    white-space: normal;
+    word-wrap: break-word;
+    & .user-name {
+        padding-right: 5px;
+    }
+
+    & .content {
+        flex : 1 1 auto;
+        white-space: normal;
+        word-wrap: break-word;
+        
+    }
+}
+
 .IconButton {
     width : 32px;
+}
+
+
+.TextButton {
+    font-size: 12px;   
+    color : #385898;
+    text-decoration: none;
+    &:not(:last-child)::after{
+        content :'·';
+        margin : 0 3px
+    }
+
+    &.user-name {
+        font-weight: bold;
+    }
+
+}
+
+.ProfileImage {
+    box-sizing: border-box;
+    width : 32px;
+    height: 32px;
+    border : 1px solid #d4d4d4;
+    border-radius: 50%;
+    width : 32px;
+    height: 32px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 5px;
 }

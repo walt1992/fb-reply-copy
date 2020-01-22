@@ -4,9 +4,9 @@ import TextButton from './TextButton';
 import ProfileImage from './ProfileImage';
 const Reply = () => {
     return (
-        <div>
-            <div><ProfileImage></ProfileImage></div>
-            <div>
+        <div className = 'Reply'>
+            <div className = 'img-wrap'><ProfileImage></ProfileImage></div>
+            <div className = 'Reply-body'>
                 <div>
                     <ReplyContent></ReplyContent>
                 </div>
