@@ -1,5 +1,5 @@
 import React from 'react';
-import ReplyList from '../components/ReplyList';
+import ReplyList from 'components/ReplyList';
 
 const ReplyListContainer = () => {
     return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import Reply from '../components/Reply';
+import Reply from 'components/Reply';
 const ReplyContainer = () => {
     return (
         <Reply></Reply>
