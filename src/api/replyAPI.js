@@ -14,20 +14,14 @@ const localStorageUtil = {
 const replyAPI = {
     delete(id){
         const reply = localStorageUtil.getItem(id);
-        if (reply.subReplies.length === 0){
-            localStorage.removeItem(id);
-            if(reply.parentId > -1){
-                const parent = localStorageUtil.getItem(reply.parentId);
-                parent.subReplies = parent.subReplies.filter(item => item.id !== id);
-                localStorageUtil.setItem(parent.id, parent)
-            }
-        } else {
-            reply.deleted = true;
-            localStorageUtil.setItem(reply.id, reply);
-        }
+        localStorage.removeItem(id);
+        const parent = localStorageUtil.getItem(reply.parentId);
+        parent.subReplies = parent.subReplies.filter(item => item !== id);
+        localStorageUtil.setItem(parent.id, parent);
+        
     },
     add(reply){
-        if(reply.parentId > -1){
+        if(reply.parentId !== -1){
             const parent = localStorageUtil.getItem(reply.parentId);
             parent.subReplies.push(reply.id);
             localStorageUtil.setItem(parent.id, parent);

@@ -1,10 +1,15 @@
 import React from 'react';
 import TextButton from './TextButton';
-const ReplyContent = ({userName, content}) => {
+import LikeChip from './LikeChip';
+const ReplyContent = ({userName, content, likeCnt}) => {
+
+    
+
     return (
         <div className = 'ReplyContent'>
             <span className='user-name'><TextButton name ={userName}></TextButton></span>
             <span className ='content'>{content}</span>
+            {likeCnt !== 0 && <LikeChip cnt ={likeCnt}/>}
         </div>
     )
 }

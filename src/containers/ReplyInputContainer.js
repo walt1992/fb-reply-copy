@@ -1,9 +1,9 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import ReplyInput from 'components/ReplyInput';
-import ProfilImage from 'components/ProfileImage';
+import ProfileImage from 'components/ProfileImage';
 import {changeInput} from 'modules/reply';
-import {addReply, getReplies} from 'modules/replies';
+import {addReply} from 'modules/replies';
 const ReplyInputContainer = ({parentId = -1}) => {
     const dispatch = useDispatch();
     const {reply} = useSelector(state => state.reply);
@@ -22,10 +22,10 @@ const ReplyInputContainer = ({parentId = -1}) => {
     }
 
     return (
-        <>
-            <ProfilImage></ProfilImage>
+        <div className ='ReplyInputContainer'>
+            <ProfileImage></ProfileImage>
             <ReplyInput onChange ={onChange} onKeyDown ={onKeyDown} value ={reply}></ReplyInput>
-        </>
+        </div>
     )
 }
 
