@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import ReplyInput from 'components/ReplyInput';
 import ProfilImage from 'components/ProfileImage';
 import {changeInput} from 'modules/reply';
+import {addReply, getReplies} from 'modules/replies';
 const ReplyInputContainer = ({parentId = -1}) => {
     const dispatch = useDispatch();
     const {reply} = useSelector(state => state.reply);
@@ -14,11 +15,12 @@ const ReplyInputContainer = ({parentId = -1}) => {
     const onKeyDown = (ev) => {
         const {key} = ev;
         if (key === 'Enter') {
-            console.log('apply')
-        } else {
-
+            dispatch(addReply(ev.target.value, parentId));
+            ev.target.value = '';
+            dispatch(changeInput(''));
         }
     }
+
     return (
         <>
             <ProfilImage></ProfilImage>

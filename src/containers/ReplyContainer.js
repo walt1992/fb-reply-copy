@@ -1,8 +1,13 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
 import Reply from 'components/Reply';
-const ReplyContainer = () => {
+const ReplyContainer = ({id}) => {
+
+    const replies = useSelector(state => state.replies, {});
+    const reply = replies[id];
+
     return (
-        <Reply></Reply>
+        <Reply reply={reply}></Reply>
     )
 }
 

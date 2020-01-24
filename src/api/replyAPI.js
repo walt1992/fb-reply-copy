@@ -1,4 +1,17 @@
-export const replyAPI = {
+const localStorageUtil = {
+    getItem(id) {
+        return JSON.parse(localStorage.getItem(id));
+    },
+    setItem(key, value){
+        if(typeof value === 'object'){
+            value = JSON.stringify(value);
+        }
+        localStorage.setItem(key, value);
+    }
+}
+
+
+const replyAPI = {
     delete(id){
         const reply = localStorageUtil.getItem(id);
         if (reply.subReplies.length === 0){
@@ -13,29 +26,13 @@ export const replyAPI = {
             localStorageUtil.setItem(reply.id, reply);
         }
     },
-    add(comment, parentId){
-
-        const reply = {
-            id : null,
-            parentId : parentId || -1,
-            userName : '',
-            comment : comment,
-            likeCnt : 0,
-            subReplies : [],
-            deleted : false,
-            subOpened : false,
-            createdAt : new Date(),
-        };
-
+    add(reply){
         if(reply.parentId > -1){
             const parent = localStorageUtil.getItem(reply.parentId);
             parent.subReplies.push(reply.id);
             localStorageUtil.setItem(parent.id, parent);
         } else {
-            let parent = localStorageUtil.getItem(-1);
-            if(!parent){
-                parent = {id : -1, subReplies :[]}; // root
-            }
+            const parent = localStorageUtil.getItem(-1);
             parent.subReplies.push(reply.id);
             localStorageUtil.setItem(-1, parent);
         }
@@ -48,19 +45,24 @@ export const replyAPI = {
     },
     get(parentId){
         const {subReplies} = localStorageUtil.getItem(parentId);
-        return subReplies.map(id => localStorageUtil.getItem(id));
-    }
-}
-
-
-const localStorageUtil = {
-    getItem(id) {
-        return JSON.parse(localStorage.getItem(id));
+        const rtn = subReplies.reduce( (prev, cur)=> {
+            prev[cur] = localStorageUtil.getItem(cur)
+            return prev;
+        }, {});
+        
+        return rtn;
     },
-    setItem(key, value){
-        if(typeof value === 'object'){
-            value = JSON.stringify(value);
+    init(){
+        let root = localStorageUtil.getItem(-1);
+        if(!root){
+            root = {id : -1, subReplies :[]}; // root
+            localStorageUtil.setItem(-1, root);
         }
-        localStorage.setItem(key, value);
+        return root;
     }
 }
+
+
+
+export default replyAPI;
+

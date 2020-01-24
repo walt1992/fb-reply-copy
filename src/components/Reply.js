@@ -2,13 +2,14 @@ import React from 'react';
 import ReplyContent from './ReplyContent';
 import TextButton from './TextButton';
 import ProfileImage from './ProfileImage';
-const Reply = () => {
+const Reply = ({reply}) => {
+    console.log(reply)
     return (
         <div className = 'Reply'>
             <div className = 'img-wrap'><ProfileImage></ProfileImage></div>
             <div className = 'Reply-body'>
                 <div>
-                    <ReplyContent></ReplyContent>
+                    <ReplyContent content ={reply.comment} userName = {reply.userName}></ReplyContent>
                 </div>
                 <div>
                     <TextButton name ='좋아요'></TextButton>
