@@ -1,8 +1,8 @@
 import React from 'react';
-
-const ProfileImage = ({src, userName}) => {
+import classnNames from 'classnames';
+const ProfileImage = ({src, userName, small}) => {
     return (
-        <img className = 'ProfileImage' src = '/siba.jpg' alt= {userName}/>
+        <img className = {classnNames('ProfileImage', {small})} src = '/siba.jpg' alt= {userName}/>
     )
 }
 

@@ -10,7 +10,6 @@ const localStorageUtil = {
     }
 }
 
-
 const replyAPI = {
     delete(id){
         const reply = localStorageUtil.getItem(id);

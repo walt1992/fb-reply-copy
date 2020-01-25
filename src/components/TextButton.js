@@ -1,7 +1,7 @@
 import React from 'react';
-
-const TextButton = ({onClick, name}) => {
-    return <a className ='TextButton' href ='#' onClick={onClick}>{name}</a>
+import classNames from 'classnames';
+const TextButton = ({onClick, name, bold}) => {
+    return <a className ={classNames('TextButton',{bold})} href ='#' onClick={onClick}>{name}</a>
 }
 
 export default React.memo(TextButton);

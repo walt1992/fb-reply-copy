@@ -16,7 +16,6 @@ export const getReplies = (parentId) => {
 
 export const initRoot = () => {
     const root = replyAPI.init();
-    console.log(root)
     return {type : INIT_ROOT, payload : { [-1] : root}};
 }
 
@@ -25,14 +24,13 @@ export const addReply = (value, parentId) => {
         id : `reply_${new Date().getTime()}`,
         parentId : parentId,
         isSubReply : parentId === -1 ? false : true,
-        userName : '',
+        userName : 'UserName',
         comment : value,
         likeCnt : 0,
         subReplies : [],
         subReplyOpened : false,
         subInputOpened : false,
         createdAt : new Date(),
-        tags :[],
     };
 
     replyAPI.add(reply);

@@ -5,7 +5,7 @@ import ProfileImage from './ProfileImage';
 const Reply = ({reply, onSubInputOpen, onDelete, onLike}) => {
     return (
         <div className = 'Reply'>
-            <div className = 'img-wrap'><ProfileImage></ProfileImage></div>
+            <div className = 'img-wrap'><ProfileImage small ={reply.isSubReply}></ProfileImage></div>
             <div className = 'Reply-body'>
                 <ReplyContent content ={reply.comment} userName = {reply.userName} likeCnt = {reply.likeCnt}></ReplyContent>
                 <div>
