@@ -5,6 +5,7 @@ import TextButton from 'components/TextButton';
 import SubReplyTemplate from 'components/SubReplyTemplate';
 import {openSubReply, openReplyInput, getReplies, deleteReply, likeReply} from 'modules/replies';
 import ReplyInputContainer from 'containers/ReplyInputContainer';
+import replyAPI from 'api/replyAPI';
 
 const ReplyContainer = ({id}) => {
     const dispatch = useDispatch();
@@ -12,18 +13,19 @@ const ReplyContainer = ({id}) => {
     const reply = replies[id];
     
     const onLike = (id) => () => {
+        replyAPI.like(id);
         dispatch(likeReply(id));
     }
 
     const onDelete = (id) => () => {
+        replyAPI.delete(id);
         dispatch(deleteReply(id));
-        dispatch(getReplies(reply.parentId));
-
     }
 
     const onSubReplyOpen = () => {
-        dispatch(getReplies(reply.id));
         dispatch(openSubReply(reply.id));
+        const replies = replyAPI.get(reply.id);
+        dispatch(getReplies(reply.id));
     }
 
     const onSubInputOpen = () => {

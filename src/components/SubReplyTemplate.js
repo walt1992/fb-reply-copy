@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const SubReplyTemplate = ({input, subReply}) => {
     return (
         <div className ='SubReplyTemplate'>

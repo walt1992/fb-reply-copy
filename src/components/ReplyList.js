@@ -4,7 +4,7 @@ import ReplyInputContainer from '../containers/ReplyInputContainer';
 const ReplyList = ({ids}) => {
 
     const list = ids?.map(id => {
-        return <ReplyContainer key ={id} id ={id}></ReplyContainer>
+        return <ReplyContainer key ={id} id ={id}></ReplyContainer>;
     })
 
     return (
