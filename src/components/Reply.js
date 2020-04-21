@@ -3,6 +3,7 @@ import ReplyContent from './ReplyContent';
 import TextButton from './TextButton';
 import ProfileImage from './ProfileImage';
 const Reply = ({reply, onSubInputOpen, onDelete, onLike}) => {
+    console.log(reply)
     return (
         <div className = 'Reply'>
             <div className = 'img-wrap'><ProfileImage small ={reply.isSubReply}></ProfileImage></div>

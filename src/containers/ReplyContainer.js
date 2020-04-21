@@ -25,7 +25,7 @@ const ReplyContainer = ({id}) => {
     const onSubReplyOpen = () => {
         dispatch(openSubReply(reply.id));
         const replies = replyAPI.get(reply.id);
-        dispatch(getReplies(reply.id));
+        dispatch(getReplies(replies));
     }
 
     const onSubInputOpen = () => {
